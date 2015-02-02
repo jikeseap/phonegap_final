@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>network</title>
+		<meta name="description" content="">
+		<meta name="author" content="Apostolis Mamaras">
+		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+		<script type="text/javascript" charset="utf-8">
+		
+		// Wait for PhoneGap to load
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        checkConnection();
+    }
+    
+   
+	var myVar = setInterval(function () {checkConnection();}, 3000);
+    function checkConnection() {
+        var networkState = navigator.connection.type;
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.NONE]     = 'No network connection';
+       // alert('Connection type: ' + states[networkState]);
+       
+       if((networkState == Connection.UNKNOWN) || (networkState == Connection.NONE)){
+       	alert("Your phone’s web connection is not working. Please check and relaunch app");
+       	window.location="network.html";
+       	}
+        else
+        {
+        	alert('Connection type: ' + states[networkState]);
+        	window.location="contact.html";
+        	
+        }
+    }
+    </script>
+  </head>
+  <body>
+    <p>A message will inform you about network status!!!</p>
+   
+  </body>
+</html>
