@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+        <link rel="stylesheet" href="main.css" type="text/css">
+        <style>
+            body{
+                 background:#888888 none repeat scroll 0 0;
+            }
+            input[type='text']{
+                width:18em;
+                border:1px solid black;
+            }
+            input[type='button']{
+                width:20em;
+                border:1px solid black;
+                color:#ffffff;
+                font-family:"Times New Roman",Times,serif;
+                font-size:0.9em;
+                font-weight:bold;
+                background:#737CA1;
+            }
+        </style>
+        <meta charset="utf-8" />
+        <title>Qr Code Scanner</title>
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+    </head>
+    <script>
+      function exitApp(){
+    	alert("Σας ευχαριστώ που δοκιμάσατε την εφαρμογή μου");
+    	navigator.app.exitApp(); 
+    }
+    
+    </script>
+
+    <body>
+
+    <p>
+    	<h1>Would you like to scan a QR Code or to terminate the app</h1>
+    <button id="startScan">Start Scan</button>
+    <br>
+    <br>
+    <input type="button" value="Exit" id="exit" onclick="exitApp()"/>
+    </p>
+
+    <div id="results"></div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+    </body>
+</html>

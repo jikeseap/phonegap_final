@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<title>Edit contact</title>
+	<meta charset="utf-8" />
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" charset="utf-8">
+
+		document.addEventListener("deviceready", onDeviceReady, false);
+			
+		//values loaded after the 
+		function onDeviceReady() {
+
+			//Initialize contact
+			window.localStorage.setItem("mySurname", "");
+			window.localStorage.setItem("phoneNumbers", "");
+			
+			//Action on button click
+			document.getElementById("EditContact").addEventListener("click", updateContactInfo);
+			
+			var set_name = document.getElementById("name");
+			//Get the name of the contact
+			set_name.value = window.localStorage.getItem("myContact");
+		}
+		
+		    //function which updates the contact
+			function updateContactInfo(contact){
+			var firstName = document.getElementById("firstname").value; //value for first name
+			var lastName = document.getElementById("lastname").value; //value for last name
+			var phoneNumbers = document.getElementById("phoneNumbers").value; //value for phone number
+			var nameObject = new ContactName(); //varablie keeps contacts info
+			nameObject.givenName = firstName;
+			nameObject.familyName = lastName;
+			nameOblect.formatted = firstName + " " + lastName;
+			contact.name = nameObject; //sets first and last name in contact 
+			contact.displayName = firstName + "" + lastName;
+			var phoneNums = [2]; //var for phone numbers available fields
+			phoneNums[0] = new ContactField('work', phoneWork, true);
+			phoneNums[1] = new ContactField('mobile', phoneMobile, true);
+			contact.phoneNumbers = phoneNums; //sets phone number in contact
+			contact.save(onUpdateSuccess, onUpdateError); //update contact
+		}
+		
+		//function with confirmation message after the updating of contact
+		function onUpdateSuccess (contact){
+			alert("Contact successfully updated");
+		}
+		
+		//function called when an error occurs during contact update 
+		function onUpdateError(contactError){
+			alert("Error in creating updating contact" + contactError.code);
+		}
+
+	</script>
+	</head>
+	<body>
+		<h1>Edit Contact</h1>
+		<!--Setting form and buttons of the interface -->
+	<form>
+		<input type="text" size="20" id="firstname" placeholder="First Name" required/>
+		<input type="text" size="20" id="lastname" placeholder="Last Name" required/>
+		<input type="tel" size="20" id="phoneNumbers" placeholder="Phone Number" required/>
+		<br>
+		<input type="button" id="EditContact" value="Update Contact"/>
+	</form>
+	</body>
+</html>
