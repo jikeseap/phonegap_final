@@ -41,7 +41,6 @@ contact.save(onSaveSuccess,onSaveError);
 //
 function onSaveSuccess(contact) {
 alert("Save Success");
-var transport = setTimeout(function(){callPage(); {window.location = "contact.html";}},3000);
 }
 // onSaveError: Failed to get the contacts
 //
@@ -49,29 +48,14 @@ function onSaveError(contactError) {
 alert("Error = " + contactError.code);
 }
 
-// Show a custom confirmation dialog
-function showConfirm(){
-	navigator.notification.confirm(
-		'Would you like to take a photo', // message
-		onConfirm, // callback to invoke with index of button pressed
-		'contact photo', // title
-		['Yes','No']    // buttonLabels
-		);
-		}
-
-function onConfirm(buttonIndex) {
-	if (buttonIndex == 0 || buttonIndex == 2){
-		//If no button pressed return to search contact
-		window.location = "contact.html";
-		}
-		else {
-				//else use localStorage to save contact name and go to next page
-				window.location = "camera.html";
-			}
-		}
-		function takePhoto(){
-			window.location="camera.html";
-		}
+//function called whent the user want to add a photo
+function takePhoto(){
+	window.location="camera.html";
+	}
+	
+function newSearch(){
+	window.location="contact.html";
+}
 </script>
 </head>
 <body>
@@ -83,7 +67,10 @@ function onConfirm(buttonIndex) {
 <input type="text" id = "lastname" /> <br/>
 <label for="phonenumber" >Phone Number </label><br/>
 <input type="tel" id="phoneNumbers" name="phoneNumbers"/> <br/>
-<input type="button" id="btnSave" value="Save Contact" onclick="saveContact()"/>
-<input type="button" id="smallImage" value="Take Photo" onclick="takePhoto()"/>
+<input type="button" value="Save Contact" id="btnSave" onclick="saveContact()"/> <br/>
+<br>
+<input type="button" value="Take Photo" id="smallImage" onclick="takePhoto"/><br/>
+<br>
+<input type="button" value="New Search" id="btnSearch" onclick="newSearch()"/><br/>
 </form>
 </body>
