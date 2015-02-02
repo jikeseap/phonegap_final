@@ -41,7 +41,7 @@ contact.save(onSaveSuccess,onSaveError);
 //
 function onSaveSuccess(contact) {
 alert("Save Success");
-var transport = setTimeout(function(){callPage() {window.location = "contact.html";}},3000);
+var transport = setTimeout(function(){callPage(); {window.location = "contact.html";}},3000);
 }
 // onSaveError: Failed to get the contacts
 //
@@ -83,7 +83,7 @@ function onConfirm(buttonIndex) {
 <input type="text" id = "lastname" /> <br/>
 <label for="phonenumber" >Phone Number </label><br/>
 <input type="tel" id="phoneNumbers" name="phoneNumbers"/> <br/>
-<input type="button" value="Save Contact" id="btnSave" onclick="saveContact()"/>
-<input type="button" value="Take Photo" id="smallImage" onclick="takePhoto()"/>
+<input type="button" id="btnSave" value="Save Contact" onclick="saveContact()"/>
+<input type="button" id="smallImage" value="Take Photo" onclick="takePhoto()"/>
 </form>
 </body>
